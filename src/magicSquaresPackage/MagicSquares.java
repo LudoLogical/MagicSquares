@@ -9,7 +9,6 @@ import java.util.Vector;
 public class MagicSquares {
 
     private Scanner file = null;
-    private String separator = "--------------------------------------------";
 
     private Vector<Integer> numElements;
     private Vector<Vector<Integer>> magicSquare;
@@ -50,7 +49,8 @@ public class MagicSquares {
 
             for (int row = 0; row < size; row++) {
 
-                magicSquare.set(row, new Vector<>(size));
+                magicSquare.set(row, new Vector<>());
+                magicSquare.get(row).setSize(size);
                 String[] currentRow = file.nextLine().split(" ");
 
                 for (int column = 0; column < size; column++) {
@@ -60,13 +60,34 @@ public class MagicSquares {
 
             }
 
-            return true;
+            return false;
 
         }
-        return false;
+        file.close();
+        return true;
     }
 
     public void printCurrentSquare() {
+
+        for (int row = 0; row < magicSquare.size(); row++) {
+
+            StringBuilder output = new StringBuilder(); // StringBuilders instead of Strings for efficiency
+
+            for (int column = 0; column < magicSquare.size(); column++) {
+
+                // Formats each number to have three digits (based on in-class direction and sample output)
+                StringBuilder currentNumber = new StringBuilder(String.valueOf(magicSquare.get(row).get(column)));
+                while (currentNumber.length() < 3) {
+                    currentNumber.insert(0, "0");
+                }
+                output.append(currentNumber).append(" ");
+
+            }
+
+            // removes final trailing ' ' in output
+            System.out.println(output.substring(0, output.length()-1));
+
+        }
 
     }
 
@@ -74,7 +95,7 @@ public class MagicSquares {
 
         int size = magicSquare.size();
         numElements.clear();
-        numElements.setSize(size*size); // elements range from 1-25; ignoring index 0
+        numElements.setSize(size*size+1); // elements range from 1-25; ignoring index 0
         for (int i = 1; i < numElements.size(); i++) {
             numElements.set(i, 0);
         }
@@ -85,12 +106,11 @@ public class MagicSquares {
             for (int column = 0; column < magicSquare.size(); column++) {
 
                 int now = magicSquare.get(row).get(column);
-                System.out.println(numElements.size());
                 if (now >= 1 && now <= numElements.size()) {
                     numElements.set(now, numElements.get(now)+1);
                 } else {
                     isValid = false;
-                    System.out.print("The square has an entry " + now + "that is greater than ");
+                    System.out.print("The square has an entry " + now + " that is greater than ");
                     System.out.println(size + " squared which is " + numElements.size());
                 }
 
@@ -165,17 +185,25 @@ public class MagicSquares {
         return false;
     }
 
+    public static Scanner keyboard = new Scanner(System.in);
+
+    public static void waitForUserInput() {
+        System.out.print("Press any key to continue . . .");
+        keyboard.nextLine();
+        keyboard.reset();
+    }
+
     public static void main(String[] args) {
 
         MagicSquares validator = new MagicSquares();
+        String separator = "--------------------------------------------"; // Indicates a new "screen"
 
-        boolean successful = validator.openFile("magic.txt");
+        boolean successful = validator.openFile("src/magicSquaresPackage/magic.txt");
         if (successful) {
 
             do {
 
-                // Indicate a new "screen"
-                System.out.println(validator.separator);
+                System.out.println(separator);
 
                 boolean atEndOfFile = validator.loadNextSquare();
                 if (atEndOfFile) {
@@ -192,7 +220,18 @@ public class MagicSquares {
                     System.out.println("Not a Magic Square");
                 }
 
+                waitForUserInput();
+
             } while (true);
+
+            // Informs the user that the program has examined the entire file;
+            // extras for formatting consistency
+            System.out.println("End of File");
+            waitForUserInput();
+            System.out.println(separator);
+            System.out.println("Th-Th-That's All Folks...");
+            waitForUserInput();
+            keyboard.close();
 
         }
 

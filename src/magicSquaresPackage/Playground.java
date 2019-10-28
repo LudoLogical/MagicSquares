@@ -1,3 +1,5 @@
+package magicSquaresPackage;
+
 import java.util.Vector;
 
 public class Playground {
@@ -21,6 +23,8 @@ public class Playground {
         System.out.println(count);
         count.set(22,5);
         System.out.println(count);
+
+        System.out.println(Integer.parseInt("05"));
 
     }
 
