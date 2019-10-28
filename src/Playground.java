@@ -20,7 +20,7 @@ public class Playground {
         count.setSize(size*size);
         System.out.println(count);
         count.set(22,5);
-        System.out.println(count.get(21)>1);
+        System.out.println(count);
 
     }
 
