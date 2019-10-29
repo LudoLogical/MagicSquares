@@ -111,7 +111,8 @@ public class MagicSquares {
                 } else {
                     isValid = false;
                     System.out.print("The square has an entry " + now + " that is greater than ");
-                    System.out.println(size + " squared which is " + numElements.size());
+                    System.out.println(size + " squared which is " + (numElements.size()-1));
+                    // subtract 1 because we don't use zero
                 }
 
             }
@@ -144,12 +145,13 @@ public class MagicSquares {
             }
             if (rowSum != magicSquareSum) {
                 isValid = false;
-                System.out.println("Row #" + i + " does not produce the expected magic square sum ");
-                System.out.println("for a " + magicSquare.size() + "magic square (" + magicSquareSum + ")");
-            } else if (columnSum != magicSquareSum) {
+                System.out.print("Row #" + (i+1) + " does not produce the expected magic square sum ");
+                System.out.println("for a " + magicSquare.size() + " magic square (" + magicSquareSum + ")");
+            }
+            if (columnSum != magicSquareSum) {
                 isValid = false;
-                System.out.println("Column #" + i + " does not produce the expected magic square sum ");
-                System.out.println("for a " + magicSquare.size() + "magic square (" + magicSquareSum + ")");
+                System.out.print("Column #" + (i+1) + " does not produce the expected magic square sum ");
+                System.out.println("for a " + magicSquare.size() + " magic square (" + magicSquareSum + ")");
             }
         }
         return isValid;
@@ -166,12 +168,13 @@ public class MagicSquares {
         }
         if (forwardSum != magicSquareSum) {
             isValid = false;
-            System.out.println("The forward diagonal does not produce the expected magic square sum ");
-            System.out.println("for a " + magicSquare.size() + "magic square (" + magicSquareSum + ")");
-        } else if (backwardSum != magicSquareSum) {
+            System.out.print("The forward diagonal does not produce the expected magic square sum ");
+            System.out.println("for a " + magicSquare.size() + " magic square (" + magicSquareSum + ")");
+        }
+        if (backwardSum != magicSquareSum) {
             isValid = false;
-            System.out.println("The backward diagonal does not produce the expected magic square sum ");
-            System.out.println("for a " + magicSquare.size() + "magic square (" + magicSquareSum + ")");
+            System.out.print("The backward diagonal does not produce the expected magic square sum ");
+            System.out.println("for a " + magicSquare.size() + " magic square (" + magicSquareSum + ")");
         }
         return isValid;
     }
