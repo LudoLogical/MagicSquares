@@ -8,16 +8,21 @@ import java.util.Scanner;
  * Author: Daniel DeAnda
  *
  * Class Purpose
- *
+ * Manages the evaluation of the potential magic squares in the magic.txt input file and reports on
+ * their validity by calling other methods and relaying the results to the user through the console.
  *
  * Class Design Description
- *
+ * Controls overall program execution by holding the screen for user input, displaying the results of the
+ * analysis of each potential magic square in the magic.txt input file performed by a MagicSquareValidator,
+ * and reporting that this process is finished when the entire file has been examined as described in the
+ * method comments for the methods contained in this class.
  *
  * Inputs:
  * None
  *
  * Outputs:
- * Console outputs (for displaying potential magic squares and reporting on their validity in a formatted way).
+ * Console outputs (for displaying information about each of the potential magic squares in magic.txt
+ * in a formatted way and reporting the completion of this process).
  *
  * Returns:
  * N/A
@@ -36,16 +41,18 @@ public class MagicSquares {
      * Author: Daniel DeAnda
      *
      * Method Purpose
-     *
+     * Pauses the execution of this program until the user provides input in the
+     * form of a press of the enter key.
      *
      * Method Design Description
-     *
+     * Uses the nextLine() function of a Scanner linked to the keyboard in order to
+     * wait for the user to press the enter key.
      *
      * Inputs:
      * None
      *
      * Outputs:
-     * None
+     * A single console output (for prompting the user for acknowledgement)
      *
      * Returns:
      * Nothing
@@ -62,22 +69,21 @@ public class MagicSquares {
      * Author: Daniel DeAnda
      *
      * Method Purpose
-     * Manages and performs the operations outlined in the class comment on line 10 by performing general
-     * control and conditional logic, managing variables, displaying relevant information, and calling the
-     * methods above.
+     * Manages the evaluation of the potential magic squares in the magic.txt input file and reports on
+     * their validity by calling other methods and relaying the results to the user through the console.
      *
      * Method Design Description
-     * Establishes a system of input and obtains initial stake and bet values from the user, then
-     * runs games of Craps as long as both the user's bet value is nonzero and the user's stake value
-     * is greater than zero through the use of a while loop, obtaining a new bet value from the user
-     * after each round as necessary.  Conditional structures are used in order to determine victory/loss
-     * and what subsequent actions should be taken.
+     * Instantiates a MagicSquareValidator with magic.txt as its input file, then queries it in the
+     * appropriate manner and order for information concerning its progress and the validity of each
+     * potential magic square.  Results are printed to the console until the entire file has been checked,
+     * at which point the program reports that this is the case and terminates.
      *
      * Inputs:
      * args - the String array of command-line arguments (not used in this program).
      *
      * Outputs:
-     * Console outputs (for the current game state and game statistics).
+     * Console outputs (for indicating which potential magic squares from magic.txt are indeed magic squares,
+     * separating each evaluation, and reporting completion), as well as those of called methods.
      *
      * Returns:
      * Nothing

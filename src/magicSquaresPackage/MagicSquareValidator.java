@@ -18,7 +18,7 @@ import java.util.Vector;
  * Reads potential magic squares from a single file (whose path is specified during
  * construction and whose formatting is presumed to be correct) into a two-dimensional
  * Vector, reports on their characteristics, and determines their validity as described
- * in the method comments for the methods that it contains.
+ * in the method comments for the methods contained in this class.
  *
  * Inputs:
  * None
