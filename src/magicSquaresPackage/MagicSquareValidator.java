@@ -163,8 +163,8 @@ public class MagicSquareValidator {
      *
      * Method Design Description
      * Determines whether Scanner file contains unexamined data. If so, closes file,
-     * but if not, reads the contents of the next magic square from the input file
-     * into magicSquare (accounting for its size) and sets magicSquareSum accordingly.
+     * but if not, reads the contents of the next magic square from file into magicSquare
+     * (accounting for its size) and sets magicSquareSum accordingly.
      *
      * Inputs:
      * None
@@ -212,7 +212,7 @@ public class MagicSquareValidator {
      * Method Purpose
      * Prints the magic square currently loaded within this MagicSquareValidator to the
      * console and normalizes each number within it such that they all have three digits
-     * (i.e. 1 -> 001, 11 -> 011).
+     * (e.g. 1 -> 001, 11 -> 011).
      *
      * Method Design Description
      * Cycles through each row (and then each column) of magicSquare, formatting each
@@ -301,7 +301,7 @@ public class MagicSquareValidator {
                     isValid = false;
                     System.out.print("The square has an entry " + now + " that is greater than ");
                     System.out.println(size + " squared which is " + (numElements.size()-1));
-                    // subtract 1 because we don't use zero
+                    // subtract 1 because we don't use index zero
                 }
 
             }
@@ -435,11 +435,11 @@ public class MagicSquareValidator {
      * First determines if the elements of the magic square in question are valid, then
      * checks the validity of the the rows/columns and diagonals (in that order) based on
      * their sums.
-     * NOTE: The first faulty check is also the last check to report issues to the console;
-     * in other words, the first category of checks that fails will result in subsequent
-     * categories of checks not being performed, so a faulty magic square may have more
-     * problems than are displayed to the end user, which are simply the first ones
-     * encountered by this algorithm.
+     * NOTE: The first faulty check will result in issues with subsequent categories of checks
+     * not being reported to the console; in other words, the first category of checks that
+     * fails will result in subsequent categories of checks not being performed, so a faulty
+     * magic square may have more problems than are displayed to the end user, which are simply
+     * the first ones encountered by this algorithm.
      *
      * Inputs:
      * None

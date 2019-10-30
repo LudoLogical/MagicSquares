@@ -29,11 +29,11 @@ import java.util.Scanner;
  */
 public class MagicSquares {
 
-    // This constant ensures that the file path on line xx is platform-agnostic
-    public static final String FILE_SEPARATOR = System.getProperty("file.separator");
+    // This constant ensures that the file path on line 93 is platform-agnostic
+    private static final String FILE_SEPARATOR = System.getProperty("file.separator");
 
     // This Scanner exists specifically to listen for user input before continuing
-    public static Scanner keyboard = new Scanner(System.in);
+    private static Scanner keyboard = new Scanner(System.in);
 
     /*
      * Method Name: waitForUserInput (static)
@@ -94,7 +94,6 @@ public class MagicSquares {
         MagicSquareValidator validator = new MagicSquareValidator(path);
         String separator = "--------------------------------------------"; // Indicates a new "screen"
 
-        ;
         boolean openSuccessful = validator.canRead();
         if (openSuccessful) {
 
